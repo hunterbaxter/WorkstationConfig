@@ -1,0 +1,38 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["pulseaudio", "network", "memory", "battery", "clock", "tray"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% charging",
+        "format-plugged": "{capacity}% plugged",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "timezone": "America/Chicago",
+        "format": "{:%A, %B %d    %r %Z}",
+        "format-alt": "{:%Y-%m-%dT%X}",
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "on-click": "pavucontrol"
+    }, 
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+}
