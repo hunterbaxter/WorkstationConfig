@@ -1,1 +1,1 @@
-# NOTE: needed to symlink cargo dir to /usr/bin for dmenu to work
+mostly functional workstation configuration for ubuntu server 22.04 

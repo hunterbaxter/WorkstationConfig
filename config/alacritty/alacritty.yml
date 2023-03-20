@@ -1,0 +1,121 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Import additional configuration files
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+#import:
+#  - /path/to/alacritty.yml
+#  https://github.com/ChristianChiarulli/Machfiles/blob/master/alacritty/.config/alacritty/alacritty.yml
+
+env:
+  TERM: alacritty
+
+window:
+  decorations: none
+  dimensions:
+    columns: 81
+    lines: 30
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 5
+    y: 5
+
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 100000
+  multiplier: 3
+font:
+  # if using ligature fork: https://github.com/zenixls2/alacritty, this is viable, else not
+  ligatures: true
+  size: 13.0
+  normal:
+    family: Jetbrains Mono
+    style: Regular
+  bold:
+    family: Jetbrains Mono
+    style: Bold
+  italic:
+    family: Jetbrains Mono
+    style: Italic
+  bold_italic:
+    family: Jetbrains Mono
+    style: Bold Italic
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: false
+live_config_reload: true
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+key_bindings:
+  - { key: P, mods: Control, action: Paste }
+  - { key: PageUp, mods: Shift, mode: ~Alt, action: ScrollPageUp }
+  - { key: PageDown, mods: Shift, mode: ~Alt, action: ScrollPageDown }
+  - { key: 0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
+
+# NOTE:
+# - Shift + Ctrl + Space (Alacritty 0.9.0)
+# Toggle Vi mode
+
+colors:
+  primary:
+    foreground: '#202E18'
+    # background: '#E5EDE6'
+    # background: '#F5F5F5'
+    background: '#FFFFFF'
+  cursor:
+    cursor: '#201547'
+    text: '#E5EDE6'
+  vi_mode_cursor:
+    cursor: '#201547'
+    text: '#E5EDE6'
+  line_indicator:
+    foreground: '#54585a'
+    background: '#201547'
+  search:
+    matches:
+      background: '0xe1e2e7'
+      foreground: '0x3760bf'
+    focused_match:
+      foreground: '0xe1e2e7'
+      background: '#582C83'
+  normal:
+    black:   '#E5EDE6'
+    red:     '#A8334C'
+    green:   '#567A30'
+    yellow:  '#944927'
+    blue:    '#286486'
+    magenta: '#88507D'
+    cyan:    '#3B8992'
+    white:   '#202E18'
+  bright:
+    black:   '#B3C6B6'
+    red:     '#94253E'
+    green:   '#3F5A22'
+    yellow:  '#803D1C'
+    blue:    '#1D5573'
+    magenta: '#7B3B70'
+    cyan:    '#2B747C'
+    white:   '#415934'
+
+
+
+# import:
+  # FIXME: this import strategy seems to no longer work
+  # - ~/.dotfiles/.config/alacritty/light_colors.yaml
+  # - ~/.dotfiles/.config/alacritty/paper_colors.yaml
+  # - ~/.dotfiles/.config/alacritty/dark_colors.yaml

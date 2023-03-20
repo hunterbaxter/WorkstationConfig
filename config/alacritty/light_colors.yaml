@@ -1,0 +1,61 @@
+# Furman Colors
+# background-color: #582C83; // Furman Purple
+# background-color: #201547; // Furman Midnight Purple
+# background-color: #54585a; // Furman Gray
+# background-color: #ffffff; // Furman White
+# https://brand.vanderbilt.edu/color/
+# VU Primary Colors
+# background-color: #CFAE70; // VU Flat Gold
+# background-color: #1C1C1C; // VU Black
+# background-color: #FFFFFF; // VU White
+# VU Secondary Colors: Neutrals
+# background-color: #777777; // VU Dark Gray
+# background-color: #E4E4E4; // VU Light Gray
+# background-color: #E0D5C0; // VU Sand
+# background-color: #F5F3EF; // VU Cream
+# VU Secondary Colors: Saturated
+# background-color: #B3C9CD; // VU Sky
+# background-color: #ECB748; // VU Highlight
+# background-color: #946E24; // VU Oak
+# background-color: #8BA18E; // VU Sage
+# $light-background-color: #F5F3EF; // VU Cream
+
+colors:
+  primary:
+    foreground: '#202E18'
+    # background: '#E5EDE6'
+    background: '#F5F5F5'
+  cursor:
+    cursor: '#201547'
+    text: '#E5EDE6'
+  vi_mode_cursor:
+    cursor: '#201547'
+    text: '#E5EDE6'
+  line_indicator:
+    foreground: '#54585a'
+    background: '#201547'
+  search:
+    matches:
+      background: '0xe1e2e7'
+      foreground: '0x3760bf'
+    focused_match:
+      foreground: '0xe1e2e7'
+      background: '#582C83'
+  normal:
+    black:   '#E5EDE6'
+    red:     '#A8334C'
+    green:   '#567A30'
+    yellow:  '#944927'
+    blue:    '#286486'
+    magenta: '#88507D'
+    cyan:    '#3B8992'
+    white:   '#202E18'
+  bright:
+    black:   '#B3C6B6'
+    red:     '#94253E'
+    green:   '#3F5A22'
+    yellow:  '#803D1C'
+    blue:    '#1D5573'
+    magenta: '#7B3B70'
+    cyan:    '#2B747C'
+    white:   '#415934'
