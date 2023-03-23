@@ -8,12 +8,12 @@ sudo apt install -y \
     clang \
     python3 python3-pip \
     npm \
-    virtualbox vagrant \
+    virtualbox virtualbox-dkms dkms vagrant \
     libfuse2
 
 # install desktop packages
 sudo apt install -y \
-    sway swaylock waybar \
+    sway swaylock swayidle waybar \
     xwayland wl-clipboard \
     libfontconfig-dev \
     pulseaudio pipewire mpv \
@@ -23,3 +23,13 @@ sudo apt install -y \
 
 # sudo adduser "$USER" audio
 # sudo timedatectl set-timezone America/Chicago
+
+# Gem5 stuff
+# sudo apt install build-essential git m4 scons zlib1g zlib1g-dev \
+#   libprotobuf-dev protobuf-compiler libprotoc-dev libgoogle-perftools-dev \
+#   python3-dev libboost-all-dev pkg-config
+# sudo apt install python-six zlib1g-dev libpng-dev swig
+#
+# had to disable secure boot for virtualbox to work
+# sudo apt install mokutil
+# sudo mokutil -–disable-validation

@@ -1,0 +1,3 @@
+[submodule "config/mpv-image-viewer"]
+	path = config/mpv-image-viewer
+	url = git@github.com:occivink/mpv-image-viewer.git
