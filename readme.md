@@ -1,1 +1,5 @@
-mostly functional workstation configuration for ubuntu server 22.04 
+mostly functional workstation configuration
+
+```sh
+git clone --recurse-submodules -j8 https://gitlab.com/hunterbaxter/workstation.git
+```

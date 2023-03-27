@@ -1,5 +1,5 @@
 source "$ZDOTDIR/private.zsh"
-# setxkbmap -option caps:swapescape
+setxkbmap -option caps:swapescape
 
 # navigation
 setopt AUTO_CD # Go to folder path without using cd.
@@ -107,7 +107,8 @@ zstyle ':vcs_info:*' stagedstr ' +'
 zstyle ':vcs_info:git:*' formats       '(%b%u%c)'
 zstyle ':vcs_info:git:*' actionformats '(%b|%a%u%c)'
 
-export LLVM_DIR=/usr/lib/llvm-13
+# export LLVM_DIR=/usr/lib/llvm-13
+source /etc/profile.d/nix.sh
 
 # Plugins
 source "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
