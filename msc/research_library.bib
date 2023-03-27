@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Research Reference Library
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Microarchitectural Attack
+- https://pierreay.github.io/reproduce-spectre-gem5/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@inproceedings{osvik2006cache,
+  title={Cache attacks and countermeasures: the case of AES},
+  author={Osvik, Dag Arne and Shamir, Adi and Tromer, Eran},
+  booktitle={Topics in Cryptology--CT-RSA 2006: The Cryptographers’ Track at the RSA Conference 2006, San Jose, CA, USA, February 13-17, 2005. Proceedings},
+  pages={1--20},
+  year={2006},
+  organization={Springer}
+}
+
+@inproceedings{yarom2014flush+,
+  title={FLUSH+RELOAD: A high resolution, low noise, L3 cache side-channel attack},
+  author={Yarom, Yuval and Falkner, Katrina},
+  booktitle={23rd $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$ Security 14)},
+  pages={719--732},
+  year={2014}
+}
+
+@inproceedings{gruss2016flush+,
+  title={Flush+Flush: a fast and stealthy cache attack},
+  author={Gruss, Daniel and Maurice, Cl{\'e}mentine and Wagner, Klaus and Mangard, Stefan},
+  booktitle={Detection of Intrusions and Malware, and Vulnerability Assessment: 13th International Conference, DIMVA 2016, San Sebasti{\'a}n, Spain, July 7-8, 2016, Proceedings 13},
+  pages={279--299},
+  year={2016},
+  organization={Springer}
+}
+
+@article{kocher2020spectre,
+  title={Spectre Attacks: Exploiting Speculative Execution},
+  author={Kocher, Paul and Horn, Jann and Fogh, Anders and Genkin, Daniel and Gruss, Daniel and Haas, Werner and Hamburg, Mike and Lipp, Moritz and Mangard, Stefan and Prescher, Thomas and others},
+  journal={Communications of the ACM},
+  volume={63},
+  number={7},
+  pages={93--101},
+  year={2020},
+  publisher={ACM New York, NY, USA}
+}
+
+@article{deng2021evaluation,
+  title={Evaluation of cache attacks on arm processors and secure caches},
+  author={Deng, Shuwen and Matyunin, Nikolay and Xiong, Wenjie and Katzenbeisser, Stefan and Szefer, Jakub},
+  journal={IEEE Transactions on Computers},
+  volume={71},
+  number={9},
+  pages={2248--2262},
+  year={2021},
+  publisher={IEEE}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Resilient Cache Design
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@inproceedings{werner2019scattercache,
+  title={ScatterCache: Thwarting Cache Attacks via Cache Set Randomization.},
+  author={Werner, Mario and Unterluggauer, Thomas and Giner, Lukas and Schwarz, Michael and Gruss, Daniel and Mangard, Stefan},
+  booktitle={USENIX Security Symposium},
+  pages={675--692},
+  year={2019}
+}
+
+@inproceedings{giner2022scatter,
+  title={Scatter and Split Securely: Defeating Cache Contention and Occupancy Attacks},
+  author={Giner, Lukas and Steinegger, Stefan and Purnal, Antoon and Eichlseder, Maria and Unterluggauer, Thomas and Mangard, Stefan and Gruss, Daniel},
+  booktitle={2023 IEEE Symposium on Security and Privacy (SP)},
+  pages={1101--1115},
+  year={2022},
+  organization={IEEE Computer Society}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Malware Detection
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@article{demme2013feasibility,
+  title={On the feasibility of online malware detection with performance counters},
+  author={Demme, John and Maycock, Matthew and Schmitz, Jared and Tang, Adrian and Waksman, Adam and Sethumadhavan, Simha and Stolfo, Salvatore},
+  journal={ACM SIGARCH computer architecture news},
+  volume={41},
+  number={3},
+  pages={559--570},
+  year={2013},
+  publisher={ACM New York, NY, USA}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tools/Benchmarks/Datasets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@misc{allstarDataset,
+  author= {JHU/APL Staff},
+  year  = {2019},
+  month = {Dec},
+  title = {Assembled Labeled Library for Static Analysis Research (ALLSTAR) Dataset},
+  url = {http://allstar.jhuapl.edu/},
+}
