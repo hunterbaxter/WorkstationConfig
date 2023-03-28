@@ -1,0 +1,35 @@
+auto-reload yes
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key h quit
+bind-key a toggle-article-read
+bind-key x delete-article
+bind-key g home
+bind-key G end
+
+browser "firefox %u"
+
+# defaults
+# color <element> <foreground color> <background color> [<attribute> ...]
+# color background          white   black
+# color listnormal          white   black
+# color listfocus           yellow  blue   bold
+# color listnormal_unread   magenta black
+# color listfocus_unread    magenta blue   bold
+# color info                yellow  blue   bold
+# color article             white   black
+
+# my black, white, and grey scheme
+# curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash
+# ^ helped
+color background          white   black
+color listnormal          white   black
+color listfocus           color232  color253
+color listnormal_unread   color232 black bold
+color listfocus_unread    color232 color253   bold
+color info                color232  color253   bold
+color article             white   black

@@ -30,6 +30,7 @@ local options = {
 	smartindent = true,
 }
 
+-- FIXME: some options like smartcase are not working
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
@@ -50,8 +51,8 @@ require("lazy").setup({
 		"github/copilot.vim",
 	},
 	{
-		-- FIXME: incredibly annoying popup when doing \something
-		-- Completions don't work for references
+		-- FIXME: Completions don't work for references
+        -- TODO: some sort of snippet system
 		"lervag/vimtex",
 		ft = { "tex", "bib" },
 		config = function()
@@ -61,13 +62,30 @@ require("lazy").setup({
 	{
 		"goolord/alpha-nvim",
 		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
+			local alpha = require("alpha")
+			local theme = require("alpha.themes.startify")
+			theme.section.header.val = {
+				" ██░ ██ ▓█████  ██▓     ██▓     ▒█████      ██░ ██  █    ██  ███▄    █ ▄▄▄█████▓▓█████  ██▀███   ",
+				"▓██░ ██▒▓█   ▀ ▓██▒    ▓██▒    ▒██▒  ██▒   ▓██░ ██▒ ██  ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒ ",
+				"▒██▀▀██░▒███   ▒██░    ▒██░    ▒██░  ██▒   ▒██▀▀██░▓██  ▒██░▓██  ▀█ ██▒▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒ ",
+				"░▓█ ░██ ▒▓█  ▄ ▒██░    ▒██░    ▒██   ██░   ░▓█ ░██ ▓▓█  ░██░▓██▒  ▐▌██▒░ ▓██▓ ░ ▒▓█  ▄ ▒██▀▀█▄   ",
+				"░▓█▒░██▓░▒████▒░██████▒░██████▒░ ████▓▒░   ░▓█▒░██▓▒▒█████▓ ▒██░   ▓██░  ▒██▒ ░ ░▒████▒░██▓ ▒██▒ ",
+				" ▒ ░░▒░▒░░ ▒░ ░░ ▒░▓  ░░ ▒░▓  ░░ ▒░▒░▒░     ▒ ░░▒░▒░▒▓▒ ▒ ▒ ░ ▒░   ▒ ▒   ▒ ░░   ░░ ▒░ ░░ ▒▓ ░▒▓░ ",
+				" ▒ ░▒░ ░ ░ ░  ░░ ░ ▒  ░░ ░ ▒  ░  ░ ▒ ▒░     ▒ ░▒░ ░░░▒░ ░ ░ ░ ░░   ░ ▒░    ░     ░ ░  ░  ░▒ ░ ▒░ ",
+				" ░  ░░ ░   ░     ░ ░     ░ ░   ░ ░ ░ ▒      ░  ░░ ░ ░░░ ░ ░    ░   ░ ░   ░         ░     ░░   ░  ",
+				" ░  ░  ░   ░  ░    ░  ░    ░  ░    ░ ░      ░  ░  ░   ░              ░             ░  ░   ░      ",
+				"                                                                                                 ",
+			}
+			theme.section.header.opts.position = "center"
+			theme.section.header.opts.hl = "Error"
+			alpha.setup(theme.opts)
 		end,
 	},
 	{
 		--FIXME: need to install
 		-- https://github.com/s1n7ax/nvim-window-picker
 		-- before I can move windows out of tree with it open
+		-- which is so wack why do they break things
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		dependencies = {
@@ -181,42 +199,42 @@ require("lazy").setup({
 		end,
 	},
 	{
-	  "nvim-treesitter/nvim-treesitter",
-	  build = ":TSUpdate",
-	  requires = { "nvim-treesitter/nvim-treesitter-textobjects" },
-	  config = function()
-	    require("nvim-treesitter.configs").setup({
-	      ensure_installed = {
-	        "bash",
-	        "c",
-	        "cpp",
-	        "css",
-            "go",
-	        "json",
-	        "julia",
-	        "lua",
-	        "latex",
-	        "llvm",
-	        "haskell",
-	        "html",
-	        "markdown",
-	        "cmake",
-	        "make",
-	        "python",
-	        "norg",
-	        "nix",
-	        "rust",
-	        "sql",
-	        "toml",
-	        "yaml",
-	        "vim",
-	      },
-	      highlight = {
-	        enable = true,
-	        additional_vim_regex_highlighting = false
-	      },
-	    })
-	  end,
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		requires = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"cpp",
+					"css",
+					"go",
+					"json",
+					"julia",
+					"lua",
+					"latex",
+					"llvm",
+					"haskell",
+					"html",
+					"markdown",
+					"cmake",
+					"make",
+					"python",
+					"norg",
+					"nix",
+					"rust",
+					"sql",
+					"toml",
+					"yaml",
+					"vim",
+				},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+			})
+		end,
 	},
 	{
 		"moll/vim-bbye",
@@ -325,7 +343,7 @@ require("lazy").setup({
 
 					-- non-code
 					null_ls.builtins.formatting.fixjson,
-					null_ls.builtins.diagnostics.yamllint,
+					-- null_ls.builtins.diagnostics.yamllint,
 				},
 			})
 		end,
@@ -348,7 +366,7 @@ require("lazy").setup({
 						require("luasnip").lsp_expand(args.body)
 					end,
 				},
-                -- TODO: completion mappings do not work
+				-- TODO: completion mappings do not work
 				-- mapping = cmp.mapping.preset.insert({
 				-- 	["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				-- 	["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -362,14 +380,14 @@ require("lazy").setup({
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "path" },
-					{ name = "cmdline" },
 					{ name = "luasnip" },
 				},
 			})
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "buffer" },
+					{ name = "buffer",
+                      name = "cmp-cmdline"},
 				},
 			})
 			cmp.setup.cmdline(":", {
@@ -416,6 +434,7 @@ require("lazy").setup({
 			require("telescope").setup({})
 			-- require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
+			require("telescope").load_extension("project")
 		end,
 	},
 
@@ -441,4 +460,5 @@ vim.notify = function(msg, ...)
 end
 
 vim.cmd("source $HOME/.config/nvim/copilot.vim")
+-- NOTE: only needed for wayland
 -- vim.cmd("source $HOME/.config/nvim/clipboard.vim")

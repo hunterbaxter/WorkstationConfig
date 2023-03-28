@@ -13,7 +13,7 @@ env:
   TERM: alacritty
 
 window:
-  decorations: none
+  # decorations: none
   dimensions:
     columns: 81
     lines: 30
@@ -30,7 +30,7 @@ scrolling:
   multiplier: 3
 font:
   # if using ligature fork: https://github.com/zenixls2/alacritty, this is viable, else not
-  ligatures: true
+  # ligatures: true
   size: 13.0
   normal:
     family: Jetbrains Mono Nerd Font
@@ -73,49 +73,46 @@ key_bindings:
 
 colors:
   primary:
-    foreground: '#202E18'
+    foreground: "#202E18"
     # background: '#E5EDE6'
     # background: '#F5F5F5'
-    background: '#FFFFFF'
+    background: "#FFFFFF"
   cursor:
-    cursor: '#201547'
-    text: '#E5EDE6'
+    cursor: "#201547"
+    text: "#E5EDE6"
   vi_mode_cursor:
-    cursor: '#201547'
-    text: '#E5EDE6'
+    cursor: "#201547"
+    text: "#E5EDE6"
   line_indicator:
-    foreground: '#54585a'
-    background: '#201547'
+    foreground: "#54585a"
+    background: "#201547"
   search:
     matches:
-      background: '0xe1e2e7'
-      foreground: '0x3760bf'
+      background: "0xe1e2e7"
+      foreground: "0x3760bf"
     focused_match:
-      foreground: '0xe1e2e7'
-      background: '#582C83'
+      foreground: "0xe1e2e7"
+      background: "#582C83"
   normal:
-    black:   '#E5EDE6'
-    red:     '#A8334C'
-    green:   '#567A30'
-    yellow:  '#944927'
-    blue:    '#286486'
-    magenta: '#88507D'
-    cyan:    '#3B8992'
-    white:   '#202E18'
+    black: "#E5EDE6"
+    red: "#A8334C"
+    green: "#567A30"
+    yellow: "#944927"
+    blue: "#286486"
+    magenta: "#88507D"
+    cyan: "#3B8992"
+    white: "#202E18"
   bright:
-    black:   '#B3C6B6'
-    red:     '#94253E'
-    green:   '#3F5A22'
-    yellow:  '#803D1C'
-    blue:    '#1D5573'
-    magenta: '#7B3B70'
-    cyan:    '#2B747C'
-    white:   '#415934'
-
-
-
+    black: "#B3C6B6"
+    red: "#94253E"
+    green: "#3F5A22"
+    yellow: "#803D1C"
+    blue: "#1D5573"
+    magenta: "#7B3B70"
+    cyan: "#2B747C"
+    white: "#415934"
 # import:
-  # FIXME: this import strategy seems to no longer work
-  # - ~/.dotfiles/.config/alacritty/light_colors.yaml
-  # - ~/.dotfiles/.config/alacritty/paper_colors.yaml
-  # - ~/.dotfiles/.config/alacritty/dark_colors.yaml
+# FIXME: this import strategy seems to no longer work
+# - ~/.dotfiles/.config/alacritty/light_colors.yaml
+# - ~/.dotfiles/.config/alacritty/paper_colors.yaml
+# - ~/.dotfiles/.config/alacritty/dark_colors.yaml
