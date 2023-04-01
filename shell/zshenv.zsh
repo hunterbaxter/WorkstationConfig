@@ -32,6 +32,7 @@ export NIX_PATH=${NIX_PATH:+$NIX_PATH:}$HOME/.nix-defexpr/channels:/nix/var/nix/
 # export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
+export M5_PATH="$HOME/miner/m5_binaries"
 # I should use xdg-ninja to clean this up
 
 export NVM_DIR="$HOME/.config/nvm"

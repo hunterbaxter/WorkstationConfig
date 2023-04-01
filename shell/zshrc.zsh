@@ -32,8 +32,9 @@ alias \
 alias \
     v="nvim"\
     z="zathura"\
-    l="swaylock"
+    l="i3lock"
 
+# l="swaylock"
 # colorize when possible
 alias \
     ls="ls --color=auto --group-directories-first" \
@@ -43,6 +44,7 @@ alias \
 alias mvi='mpv --config-dir=$HOME/.config/mvi'
 alias tree="exa --tree"
 alias envim="nvim $XDG_CONFIG_HOME/nvim/init.lua"
+alias szsh="source $ZDOTDIR/.zshrc"
 
 # jump back to previous directories
 alias d='dirs -v'

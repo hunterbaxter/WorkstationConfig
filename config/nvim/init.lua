@@ -31,6 +31,7 @@ local options = {
 }
 
 -- FIXME: some options like smartcase are not working
+-- NOTE: nui got cleaned for some reason
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
@@ -38,12 +39,15 @@ end
 require("lazy").setup({
 	{
 		"projekt0n/github-nvim-theme",
-		tag = "0.0.x",
+		-- "folke/tokyonight.nvim",
+		branch = "0.0.x",
 		priority = 1000,
 		config = function()
 			require("github-theme").setup({
 				theme_style = "light_colorblind",
 				transparent = true,
+				-- theme_style = "dark_colorblind",
+				-- vim.cmd[[colorscheme tokyonight-moon]]
 			})
 		end,
 	},
@@ -52,7 +56,7 @@ require("lazy").setup({
 	},
 	{
 		-- FIXME: Completions don't work for references
-        -- TODO: some sort of snippet system
+		-- TODO: some sort of snippet system
 		"lervag/vimtex",
 		ft = { "tex", "bib" },
 		config = function()
@@ -86,6 +90,7 @@ require("lazy").setup({
 		-- https://github.com/s1n7ax/nvim-window-picker
 		-- before I can move windows out of tree with it open
 		-- which is so wack why do they break things
+		--
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		dependencies = {
@@ -93,6 +98,14 @@ require("lazy").setup({
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
+		-- Worse, this has weird keybindings that I don't want to learn
+		-- "nvim-tree/nvim-tree.lua",
+		-- dependencies = {
+		-- 	"nvim-tree/nvim-web-devicons",
+		-- },
+		-- config = function()
+		-- 	require("nvim-tree").setup()
+		-- end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
@@ -144,6 +157,10 @@ require("lazy").setup({
 				-- 	e = { "<cmd>Copilot enable<cr><cmd>lua print('Copilot enabled')<cr>", "Enable copilot" },
 				-- 	s = { "<cmd>Copilot status<cr>", "Copilot status" },
 				-- },
+				c = {
+					name = "code",
+					w = { "<cmd>:w !wc -w<cr>", "Word Count" },
+				},
 				w = {
 					name = "window",
 					h = { "<C-w>h", "Go to left window" },
@@ -171,6 +188,8 @@ require("lazy").setup({
 				o = {
 					name = "open",
 					t = { "<cmd>Neotree toggle<cr>", "Toggle File Tree" },
+					-- FIXME: this doesn't work if the tree is open
+					-- t = { "<cmd>NvimTreeToggle<cr>", "Toggle File Tree" },
 				},
 				{ prefix = "<leader>" },
 			})
@@ -360,20 +379,61 @@ require("lazy").setup({
 		},
 		config = function()
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
+			require("luasnip/loaders/from_vscode").lazy_load()
+			local check_backspace = function()
+				local col = vim.fn.col(".") - 1
+				return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+			end
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
+						luasnip.lsp_expand(args.body)
 					end,
 				},
-				-- TODO: completion mappings do not work
-				-- mapping = cmp.mapping.preset.insert({
-				-- 	["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				-- 	["<C-f>"] = cmp.mapping.scroll_docs(4),
-				-- 	["<C-Space>"] = cmp.mapping.complete(),
-				-- 	["<C-e>"] = cmp.mapping.abort(),
-				-- 	["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				-- }),
+				mapping = {
+					["<C-k>"] = cmp.mapping.select_prev_item(),
+					["<C-j>"] = cmp.mapping.select_next_item(),
+					["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+					["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+					["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+					["<C-e>"] = cmp.mapping({
+						i = cmp.mapping.abort(),
+						c = cmp.mapping.close(),
+					}),
+					-- Accept currently selected item. If none selected, `select` first item.
+					-- Set `select` to `false` to only confirm explicitly selected items.
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expandable() then
+							luasnip.expand()
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif check_backspace() then
+							fallback()
+						else
+							fallback()
+						end
+					end, {
+						"i",
+						"s",
+					}),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
+						end
+					end, {
+						"i",
+						"s",
+					}),
+				},
 				sources = {
 					-- FIXME: these don't seem right as they aren't helpful
 					-- should have friendlysnips
@@ -383,11 +443,14 @@ require("lazy").setup({
 					{ name = "luasnip" },
 				},
 			})
+			-- FIXME: search completion no longer works
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "buffer",
-                      name = "cmp-cmdline"},
+					{
+						name = "buffer",
+						name = "cmp-cmdline",
+					},
 				},
 			})
 			cmp.setup.cmdline(":", {
@@ -417,7 +480,6 @@ require("lazy").setup({
 			require("clangd_extensions").setup()
 		end,
 	},
-	-- FIXME: for some reason this does not work
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
@@ -442,10 +504,19 @@ require("lazy").setup({
 		"tpope/vim-fugitive",
 	},
 	{
-		-- NOTE: I don't even know if I like this plugin
-		"ggandor/leap.nvim",
+		-- FIXME: folds don't work unless *.norg opened directly
+		-- FIXME: folds don't work unless file is reloaded directly
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
 		config = function()
-			require("leap").add_default_mappings()
+			require("neorg").setup({
+				load = {
+					["core.defaults"] = {},
+					["core.norg.concealer"] = {},
+					-- ["core.export.markdown"] = {},
+					-- ["core.integrations.telescope"] = {}
+				},
+			})
 		end,
 	},
 })
@@ -459,6 +530,6 @@ vim.notify = function(msg, ...)
 	notify(msg, ...)
 end
 
-vim.cmd("source $HOME/.config/nvim/copilot.vim")
+vim.cmd("source $XDG_CONFIG_HOME/nvim/copilot.vim")
 -- NOTE: only needed for wayland
--- vim.cmd("source $HOME/.config/nvim/clipboard.vim")
+-- vim.cmd("source $XDG_CONFIG_HOME/nvim/clipboard.vim")

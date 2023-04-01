@@ -5,14 +5,14 @@ sudo dnf install util-linux-user zsh
 
 # https://docs.fedoraproject.org/en-US/quick-docs/changing-selinux-states-and-modes/
 # WARN: nix doesn't work with selinux, also has some annoying error on fedora
-sudo dnf groupinstall -y "Development Tools" "Development Libraries"
+sudo dnf groupinstall -y "Development Tools" "Development Libraries" "Virtualization"
 sudo dnf install -y \
 	clang \
 	i3 dmenu xrandr \
 	sway waybar alacritty \
 	python3 python3-pip \
 	vagrant \
-	fcitx5
+    nmap
 
 # sudo apt install -y \
 #     build-essential \
