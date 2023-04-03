@@ -1,3 +1,5 @@
+-- FIXME: Can't move <space><w><l> move right in split
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -160,6 +162,7 @@ require("lazy").setup({
 				c = {
 					name = "code",
 					w = { "<cmd>:w !wc -w<cr>", "Word Count" },
+					d = { "<cmd>ToggleDiag<cr>", "Toggle Diagnostics" },
 				},
 				w = {
 					name = "window",
@@ -475,7 +478,12 @@ require("lazy").setup({
 			require("trouble").setup({})
 		end,
 	},
-
+	{
+		"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+		config = function()
+			require("toggle_lsp_diagnostics").init()
+		end,
+	},
 	{
 		"p00f/clangd_extensions.nvim",
 		config = function()
