@@ -47,7 +47,7 @@ require("lazy").setup({
         config = function()
             require("github-theme").setup({
                 theme_style = "light_colorblind",
-                transparent = true,
+                -- transparent = true,
                 -- theme_style = "dark_colorblind",
             })
         end,
@@ -55,7 +55,7 @@ require("lazy").setup({
     {
         'marko-cerovac/material.nvim',
         config = function()
-            -- vim.g.material_style = "deep ocean"
+            vim.g.material_style = "deep ocean"
             -- vim.cmd 'colorscheme material'
         end
     },

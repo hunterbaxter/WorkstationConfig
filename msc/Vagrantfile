@@ -3,25 +3,27 @@
 # Download: https://developer.hashicorp.com/vagrant/downloads
 # Configure: https://developer.hashicorp.com/vagrant/docs/vagrantfile
 # Prerequisites:
-#   apt install vagrant
 #   vagrant plugin install vagrant-disksize vagrant-vbguest
 
 $script = <<-'SCRIPT'
-sudo apt install -y ghidra llvm-13 cmake
-touch /home/vagrant/.bashrc
-echo 'export LLVM_DIR=/usr/lib/llvm-13' >> .zshrc
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y build-essential cmake linux-headers-$(uname -r)
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "kalilinux/rolling"
+  # config.vm.box = "ubuntu/focal64" # 20.04
+  config.vm.box = "ubuntu/jammy64" # 22.04
   # NOTE: username and password should be "vagrant"
-  config.vm.synced_folder "./", "/home/vagrant/security", type: "virtualbox"
+  config.vm.synced_folder "./", "/home/vagrant/caps", type: "virtualbox"
   config.disksize.size = "40GB"
   config.vm.provider "virtualbox" do |v|
-    v.name = "kali"
-    v.gui = true
-    v.cpus = 2
-    v.memory = "8192"
+    v.name = "something"
+    v.gui = false
+    v.cpus = 8
+    v.memory = "8192" # 8gb
+    # v.memory = "16384" # 16gb
+    # v.memory = "32768" # 32gb
     v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
   end
   config.vm.provision "shell", inline: $script
