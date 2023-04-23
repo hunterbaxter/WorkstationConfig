@@ -11,7 +11,8 @@ bind-key x delete-article
 bind-key g home
 bind-key G end
 
-browser "firefox %u"
+# browser "firefox %u"
+browser "brave-browser %u"
 
 # defaults
 # color <element> <foreground color> <background color> [<attribute> ...]
