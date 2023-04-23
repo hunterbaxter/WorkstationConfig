@@ -17,6 +17,22 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " ,"
 
+-- FIXME: this should be integrated elsewhere
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+keymap("", "<Space>", "<Nop>", opts)
+keymap("n", "<F1>", ":lua require'dap'.continue()<cr>", opts)
+keymap("n", "<F2>", ":lua require'dap'.step_over()<cr>", opts)
+keymap("n", "<F3>", ":lua require'dap'.step_into()<cr>", opts)
+keymap("n", "<F3>", ":lua require'dap'.step_out()<cr>", opts)
+keymap("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<cr>", opts)
+keymap(
+  "n",
+  "<leader>B",
+  ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
+  opts
+)
+
 local options = {
   number = true,
   relativenumber = true,
@@ -260,8 +276,14 @@ require("lazy").setup({
   {
     "RRethy/vim-illuminate",
   },
-
-  -- LSP
+  {
+    "folke/neodev.nvim",
+    config = function()
+      require("neodev").setup({
+        library = { plugins = { "nvim-dap-ui" }, types = true },
+      })
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -533,15 +555,11 @@ require("lazy").setup({
   -- },
   {
     "mfussenegger/nvim-dap",
-    config = function()
-      local dap = require("dap")
-      dap.adapters.cppdbg = {
-        id = "cppdbg",
-        type = "executable",
-        command = "/home/h/.local/lib/vscodecpptools/extension/debugAdapters/bin/OpenDebugAD7",
-      }
-      dap.configurations.c = dap.configurations.cpp
-    end,
+    requires = {
+      "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      "mfussenegger/nvim-dap-python",
+    },
   },
   { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
 })
@@ -558,3 +576,4 @@ end
 vim.cmd("source $XDG_CONFIG_HOME/nvim/copilot.vim")
 -- NOTE: only needed for wayland
 -- vim.cmd("source $XDG_CONFIG_HOME/nvim/clipboard.vim")
+require("debugging")
