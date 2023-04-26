@@ -72,7 +72,7 @@ key_bindings:
 # Toggle Vi mode
 #
 import:
-  # - ~/.config/alacritty/light_colors.yaml
-  - ~/.config/alacritty/atom_one_light.yaml
+  - ~/.config/alacritty/light_colors.yaml
+  # - ~/.config/alacritty/atom_one_light.yaml
   # - ~/.config/alacritty/paper_colors.yaml
-  - ~/.config/alacritty/hyper.yaml
+  # - ~/.config/alacritty/hyper.yaml

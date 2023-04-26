@@ -64,7 +64,7 @@ require("lazy").setup({
       require("github-theme").setup({
         theme_style = "light_colorblind",
         -- transparent = true,
-        theme_style = "dark_colorblind",
+        -- theme_style = "dark_colorblind",
       })
     end,
   },
