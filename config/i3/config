@@ -7,7 +7,7 @@ bindsym Mod1+Shift+r restart
 font pango: Jetbrains Mono 10
 
 # start a terminal
-bindsym Mod1+Return exec alacritty
+bindsym Mod1+Return exec wezterm
 
 # screenshot
 # NOTE: I don't think this works

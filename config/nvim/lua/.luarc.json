@@ -1,0 +1,21 @@
+{
+    "workspace.library": [
+        "/home/h/.config/nvim",
+        "/home/h/.local/share/nvim/lazy/lazy.nvim",
+        "/home/h/.local/share/nvim/lazy/nvim-lspconfig",
+        "/home/h/.local/share/nvim/lazy/neodev.nvim",
+        "/home/h/.local/share/nvim/lazy/nvim-web-devicons",
+        "/home/h/.local/share/nvim/lazy/trouble.nvim",
+        "/home/h/.local/share/nvim/lazy/gitsigns.nvim",
+        "/home/h/.local/share/nvim/lazy/nvim-treesitter",
+        "/home/h/.local/share/nvim/lazy/neorg",
+        "/home/h/.local/share/nvim/lazy/material.nvim",
+        "/home/h/.local/share/nvim/lazy/copilot.vim",
+        "/home/h/.local/share/nvim/lazy/plenary.nvim",
+        "/home/h/.local/share/nvim/lazy/todo-comments.nvim",
+        "/home/h/.local/share/nvim/lazy/github-nvim-theme",
+        "/usr/share/nvim/runtime",
+        "/home/h/.local/state/nvim/lazy/readme",
+        "${3rd}/luv/library"
+    ]
+}

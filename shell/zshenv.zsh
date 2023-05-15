@@ -10,8 +10,9 @@ export XDG_CURRENT_DESKTOP="Sway"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="alacritty"
-export BROWSER="brave-browser"
+# export TERMINAL="alacritty"
+export TERMINAL="wezterm"
+export BROWSER="google-chrome"
 
 mkdir -p $XDG_CACHE_HOME/zsh
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
