@@ -34,6 +34,7 @@ export NIX_PATH=${NIX_PATH:+$NIX_PATH:}$HOME/.nix-defexpr/channels:/nix/var/nix/
 export CC="/usr/bin/clang"
 export CXX="/usr/bin/clang++"
 export M5_PATH="$HOME/miner/m5_binaries"
+export JULIA_NUM_THREADS=8
 # I should use xdg-ninja to clean this up
 
 export NVM_DIR="$HOME/.config/nvm"

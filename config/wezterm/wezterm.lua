@@ -7,7 +7,7 @@ end
 
 config.cursor_blink_rate = 0
 config.enable_tab_bar = false
-config.font = wezterm.font("JetBrains Mono Nerd Font")
+config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
 config.scrollback_lines = 10000
 
