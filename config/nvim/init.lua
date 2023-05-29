@@ -47,6 +47,7 @@ local options = {
   softtabstop = 4,
   smartindent = true,
   conceallevel = 3,
+  spelllang = "en_us",
 }
 
 -- FIXME: some options like smartcase are not working
@@ -170,17 +171,26 @@ require("lazy").setup {
           p = { "<cmd>Telescope project<cr>", "Find projects" },
         },
         -- BUG: for some reason this particular prefix does not pick up leader
-        -- a = {
-        -- 	name = "AI",
-        -- 	p = { "<cmd>Copilot panel<cr>", "Open copilot panel" },
-        -- 	d = { "<cmd>Copilot disable<cr><cmd>lua print('Copilot disabled')<cr>", "Disable copilot" },
-        -- 	e = { "<cmd>Copilot enable<cr><cmd>lua print('Copilot enabled')<cr>", "Enable copilot" },
-        -- 	s = { "<cmd>Copilot status<cr>", "Copilot status" },
-        -- },
+        a = {
+          name = "AI",
+          p = { "<cmd>Copilot panel<cr>", "Open copilot panel" },
+          d = {
+            "<cmd>Copilot disable<cr><cmd>lua print('Copilot disabled')<cr>",
+            "Disable copilot",
+          },
+          e = {
+            "<cmd>Copilot enable<cr><cmd>lua print('Copilot enabled')<cr>",
+            "Enable copilot",
+          },
+          s = { "<cmd>Copilot status<cr>", "Copilot status" },
+        },
         c = {
           name = "code",
           w = { "<cmd>:w !wc -w<cr>", "Word Count" },
           d = { "<cmd>ToggleDiag<cr>", "Toggle Diagnostics" },
+          -- FIXME: why is it not a red squiggly line?
+          s = { "<cmd>:setlocal spell!<cr>", "Toggle Spell Check" },
+          c = { "<cmd>:VimtexCompile<cr>", "Vimtex Compile" },
         },
         w = {
           name = "window",
@@ -209,8 +219,6 @@ require("lazy").setup {
         o = {
           name = "open",
           t = { "<cmd>Neotree toggle<cr>", "Toggle File Tree" },
-          -- FIXME: this doesn't work if the tree is open
-          -- t = { "<cmd>NvimTreeToggle<cr>", "Toggle File Tree" },
         },
       }, { prefix = "<leader>" })
       wk.setup {}
@@ -544,7 +552,6 @@ require("lazy").setup {
       })
     end,
   },
-
   {
     "folke/trouble.nvim",
     dependencies = {
@@ -595,6 +602,10 @@ require("lazy").setup {
   {
     "iamcco/markdown-preview.nvim",
     config = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    "NvChad/nvterm",
+    config = function() require("nvterm").setup() end,
   },
 }
 
