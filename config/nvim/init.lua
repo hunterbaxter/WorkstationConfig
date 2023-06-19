@@ -33,12 +33,18 @@ keymap(
   opts
 )
 
+-- HACK: I don't know if this is the recommended way of doing this
+local function disable_cmp()
+  local cmp = require "cmp"
+  cmp.setup { sources = {} }
+end
+vim.cmd 'command! DisableCmp lua require("cmp").setup({ sources = {} })'
+
 local options = {
   number = true,
   relativenumber = true,
   numberwidth = 3,
   ruler = true,
-  smartcase = true,
   autoindent = true,
   expandtab = true,
   termguicolors = true,
@@ -48,6 +54,8 @@ local options = {
   smartindent = true,
   conceallevel = 3,
   spelllang = "en_us",
+  smartcase = true,
+  ignorecase = true,
 }
 
 -- FIXME: some options like smartcase are not working
@@ -187,7 +195,7 @@ require("lazy").setup {
         c = {
           name = "code",
           w = { "<cmd>:w !wc -w<cr>", "Word Count" },
-          d = { "<cmd>ToggleDiag<cr>", "Toggle Diagnostics" },
+          d = { "<cmd>ToggleDiag<cr><cmd>DisableCmp<cr>", "Disable IDE features" },
           -- FIXME: why is it not a red squiggly line?
           s = { "<cmd>:setlocal spell!<cr>", "Toggle Spell Check" },
           c = { "<cmd>:VimtexCompile<cr>", "Vimtex Compile" },
@@ -238,6 +246,32 @@ require("lazy").setup {
   {
     "numToStr/Comment.nvim",
     config = function() require("Comment").setup() end,
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    config = function()
+      local rt = require "rust-tools"
+      rt.setup {
+        server = {
+          on_attach = function(_, bufnr)
+            -- Hover actions
+            vim.keymap.set(
+              "n",
+              "<C-space>",
+              rt.hover_actions.hover_actions,
+              { buffer = bufnr }
+            )
+            -- Code action groups
+            vim.keymap.set(
+              "n",
+              "<Leader>a",
+              rt.code_action_group.code_action_group,
+              { buffer = bufnr }
+            )
+          end,
+        },
+      }
+    end,
   },
   {
     "nvim-orgmode/orgmode",
