@@ -17,6 +17,16 @@ bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow)
 exec redshift-gtk & disown
 exec flameshot & disown
 
+# ```
+# # Open clipboard history
+# bindsym $mod+c exec "rofi -show clipboard -modi clipboard:greenclip print"
+#
+# # Insert item from clipboard history
+# bindsym $mod+Shift+v exec "echo -n $(greenclip print | rofi -dmenu -mesg 'Select item to insert:') | xdotool type --clearmodifiers --file -"
+# ```
+#
+# In this example, the keyboard shortcut for opening clipboard history is Mod+c and the shortcut for pasting from it is Mod+Shift+v. This assumes you have installed and are running the greenclip clipboard manage^[cr. If you are using a different clipboard manager, you may need to adjust the command accordingly.
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {

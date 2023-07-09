@@ -1,45 +1,44 @@
-local wezterm = require("wezterm")
+local wezterm = require "wezterm"
 local config = {}
 
-if wezterm.config_builder then
-	config = wezterm.config_builder()
-end
+if wezterm.config_builder then config = wezterm.config_builder() end
 
 config.cursor_blink_rate = 0
 config.enable_tab_bar = false
-config.font = wezterm.font("JetBrains Mono")
+config.font = wezterm.font "JetBrains Mono"
 config.font_size = 14.0
 config.scrollback_lines = 10000
+config.adjust_window_size_when_changing_font_size = false
 
 -- atom one light colorscheme
 config.colors = {
-	foreground = "#2a2b33",
-	background = "#f8f8f8",
-	cursor_bg = "#2a2b33",
-	cursor_border = "#2a2b33",
-	cursor_fg = "#f8f8f8",
-	selection_bg = "#2a2b33",
-	selection_fg = "#f8f8f8",
-	ansi = {
-		"#000000",
-		"#de3d35",
-		"#3e953a",
-		"#d2b67b",
-		"#2f5af3",
-		"#a00095",
-		"#3e953a",
-		"#bbbbbb",
-	},
-	brights = {
-		"#000000",
-		"#de3d35",
-		"#3e953a",
-		"#d2b67b",
-		"#2f5af3",
-		"#a00095",
-		"#3e953a",
-		"#ffffff",
-	},
+    foreground = "#2a2b33",
+    background = "#f8f8f8",
+    cursor_bg = "#2a2b33",
+    cursor_border = "#2a2b33",
+    cursor_fg = "#f8f8f8",
+    selection_bg = "#2a2b33",
+    selection_fg = "#f8f8f8",
+    ansi = {
+        "#000000",
+        "#de3d35",
+        "#3e953a",
+        "#d2b67b",
+        "#2f5af3",
+        "#a00095",
+        "#3e953a",
+        "#bbbbbb",
+    },
+    brights = {
+        "#000000",
+        "#de3d35",
+        "#3e953a",
+        "#d2b67b",
+        "#2f5af3",
+        "#a00095",
+        "#3e953a",
+        "#ffffff",
+    },
 }
 
 -- hyper dark colorscheme

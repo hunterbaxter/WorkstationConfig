@@ -7,6 +7,21 @@ report.minimal.columns=due.relative,description
 report.minimal.labels=Due,Description
 report.minimal.sort=due
 
+# Custom Report for Email
+report.minimal.columns=due.relative,description
+report.minimal.labels=Due,Description
+report.minimal.sort=due
+
+# Convenience CLI report for checking things daily
+# report.day.columns=due.relative,description,id
+# report.day.labels=Due,Description,ID
+# report.day.sort=due
+
+report.day.columns=due.relative,id,description,entry,tags
+report.day.labels=Due,ID,Description,Created,Tags
+report.day.sort=due+,entry+
+report.day.filter=status:pending
+
 # Color theme (uncomment one to use)
 # include light-16.theme
 include light-256.theme

@@ -3,4 +3,4 @@
 EMAIL="$1"
 
 # NOTE: requires defining a task warrior report named "email"
-task minimal | mutt -s "$(date +'%B %d %Y'): Open Tasks" "$EMAIL"
+task minimal -lc | mutt -s "$(date +'%B %d %Y'): Open Tasks" "$EMAIL"
