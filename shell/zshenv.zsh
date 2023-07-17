@@ -39,6 +39,8 @@ export JULIA_NUM_THREADS=8
 export TASKDDATA="$HOME/.local/taskd"
 export cpr_DIR=/usr/local/include/cpr
 export INFLUXDB_TOKEN=6Ansc3g4lt8ggMA_YgSGpDy_2HFpRMXh7Ov3_Tu7LnfPhYV8A4RU5FulOdfVZv78hill-7pjm9j7j5JvzhRRrw==
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # I should use xdg-ninja to clean this up
 

@@ -1,0 +1,16 @@
+[[language]]
+name = "python"
+auto-format = true
+formatter = { command = "black", args = ["--quiet", "--line-length", "80"] }
+
+[[language]]
+name = "rust"
+auto-format = true
+
+# On older versions of Helix, try using [language.config.check] instead
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "nix"
+formatter = { command = "nixpkgs-fmt" }

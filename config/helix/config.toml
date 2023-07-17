@@ -1,0 +1,13 @@
+theme = "spacebones_light"
+# theme = "ayu_light"
+# theme = "onelight"
+# theme = "emacs"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
