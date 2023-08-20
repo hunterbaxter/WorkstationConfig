@@ -195,7 +195,8 @@ require("lazy").setup {
         c = {
           name = "code",
           w = { "<cmd>:w !wc -w<cr>", "Word Count" },
-          d = { "<cmd>ToggleDiag<cr><cmd>DisableCmp<cr>", "Disable IDE features" },
+          a = { "<cmd>ToggleDiag<cr><cmd>DisableCmp<cr>", "Disable All IDE features" },
+          d = { "<cmd>ToggleDiag<cr>", "Disable diagnostics" },
           -- FIXME: why is it not a red squiggly line?
           s = { "<cmd>:setlocal spell!<cr>", "Toggle Spell Check" },
           c = { "<cmd>:VimtexCompile<cr>", "Vimtex Compile" },
@@ -652,6 +653,6 @@ vim.notify = function(msg, ...)
   notify(msg, ...)
 end
 
-vim.cmd "source $XDG_CONFIG_HOME/nvim/copilot.vim"
+-- vim.cmd "source $XDG_CONFIG_HOME/nvim/copilot.vim"
 -- NOTE: only needed for wayland
 -- vim.cmd("source $XDG_CONFIG_HOME/nvim/clipboard.vim")
