@@ -1,13 +1,5 @@
-mostly functional workstation configuration
+hunter's workstation config
 
 ```sh
 git clone --recurse-submodules -j8 https://gitlab.com/hunterbaxter/workstation.git
 ```
-
-# TODO:
-
-- password manager
-- bookmark manager
-- screenshot on i3 terrible compared to wayland
-- **lots** of nvim fixes
-- neomutt
